@@ -49,6 +49,16 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+.App {
+  display: flex;
+  .sidebar {
+    width: 320px;
+  }
+  .main {
+    flex-grow: 1;
+  }
+}
 `;
 
 export default GlobalStyle;
