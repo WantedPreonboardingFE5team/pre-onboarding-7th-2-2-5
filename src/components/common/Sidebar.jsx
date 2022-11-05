@@ -32,7 +32,7 @@ const Sidebar = () => {
 export default Sidebar;
 
 const StContainer = styled.div`
-  margin: 60px 40px;
+  padding: 60px 40px;
 `;
 
 const Logo = styled.div`
@@ -60,7 +60,7 @@ const StMenu = styled.div`
 `;
 
 const StSelect = styled.select`
-  padding: 10px 10px;
+  padding: 10px 120px 10px 10px;
   border-radius: 5px;
   cursor: pointer;
 `;
