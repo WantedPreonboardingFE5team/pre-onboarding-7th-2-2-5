@@ -1,13 +1,13 @@
 import Header from '../components/common/Header';
 import Title from '../components/common/Title';
-import AdManagement from '../components/AdManagement';
+import AdManage from '../components/Ad/Ad';
 
 const Ad = () => {
   return (
     <div className="ad">
       <Header />
       <Title text="광고관리" />
-      <AdManagement />
+      <AdManage />
     </div>
   );
 };
