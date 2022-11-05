@@ -18,7 +18,7 @@ const Sidebar = () => {
       </StMenu>
       <StMenu>
         <p>광고 센터</p>
-        <StButton color="palette.grey.800">
+        <StButton>
           <InsertChartIcon />
           대시보드
         </StButton>
