@@ -54,11 +54,16 @@ table {
   display: flex;
   height: 100vh;
 
+  background-color: #E5E5E5;
+
   .sidebar {
     width: 240px;
+    height: 100vh;
+    background-color: white;
   }
-  .main {
+  .main .ad {
     flex-grow: 1;
+    height: 100vh;
   }
 }
 `;
