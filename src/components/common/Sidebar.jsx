@@ -5,7 +5,9 @@ import AddchartIcon from '@mui/icons-material/Addchart';
 const Sidebar = () => {
   return (
     <StContainer className="sidebar">
-      <Logo />
+      <Logo>
+        <img src="https://lever.me/img/logo-black.svg" alt="logo" />
+      </Logo>
       <StHr />
       <StMenu>
         <p>서비스</p>
@@ -38,8 +40,6 @@ const StContainer = styled.div`
 const Logo = styled.div`
   width: 120px;
   height: 30px;
-
-  background-color: gray;
 `;
 
 const StHr = styled.div`
