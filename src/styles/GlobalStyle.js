@@ -52,8 +52,10 @@ table {
 
 .App {
   display: flex;
+  height: 100vh;
+
   .sidebar {
-    width: 320px;
+    width: 240px;
   }
   .main {
     flex-grow: 1;
