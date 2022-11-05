@@ -53,12 +53,10 @@ table {
 .App {
   display: flex;
   height: 100vh;
-
   background-color: #E5E5E5;
 
   .sidebar {
     width: 240px;
-    height: 100vh;
     background-color: white;
   }
   .main .ad {

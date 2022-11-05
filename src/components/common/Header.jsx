@@ -24,6 +24,8 @@ const StHeader = styled.div`
   height: 80px;
   border-bottom: 1px solid #edeff1;
 
+  width: 70vw;
+
   svg {
     margin-left: 30px;
   }
