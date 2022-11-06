@@ -24,8 +24,7 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
-  padding: 0 1rem;
+  width: 130px;
   border: 1px solid #d1d8dc;
   border-radius: 10px;
   cursor: pointer;

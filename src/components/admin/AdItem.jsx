@@ -67,5 +67,5 @@ export default AdItem;
 
 const Title = styled.div`
   font-size: 18px;
-  margin: 1.5rem 10px 1.8rem 10px;
+  margin: 1.2rem 10px 1.2rem 10px;
 `;
