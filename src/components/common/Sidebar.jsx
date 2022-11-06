@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import AddchartIcon from '@mui/icons-material/Addchart';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   return (
     <StContainer className="sidebar">
       <Logo>
@@ -18,11 +20,11 @@ const Sidebar = () => {
       </StMenu>
       <StMenu>
         <p>광고 센터</p>
-        <StButton>
+        <StButton onClick={() => navigate('/')}>
           <InsertChartIcon />
           대시보드
         </StButton>
-        <StButton>
+        <StButton onClick={() => navigate('/ad')}>
           <AddchartIcon />
           광고관리
         </StButton>
@@ -69,7 +71,8 @@ const StButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
+  /* padding: 10px 15px; */
+  padding: 10px 120px 10px 10px;
 
   border: none;
   border-radius: 5px;
@@ -79,6 +82,10 @@ const StButton = styled.button`
   color: #3a474e;
   font-size: 17px;
   cursor: pointer;
+
+  :hover {
+    background-color: #edeff1;
+  }
 
   svg {
     margin-right: 10px;
