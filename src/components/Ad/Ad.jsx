@@ -89,9 +89,8 @@ const StButton = styled.button`
 `;
 
 const StAdWrapper = styled.div`
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   column-gap: 20px;
   row-gap: 20px;
 `;
