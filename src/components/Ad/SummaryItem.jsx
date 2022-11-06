@@ -2,7 +2,7 @@ import styled from 'styled-components';
 const SummaryItem = ({ title, content }) => {
   return (
     <StListItem>
-      <StListTitle> {title}</StListTitle>
+      <StListTitle>{title}</StListTitle>
       <StListContent>{content}</StListContent>
     </StListItem>
   );

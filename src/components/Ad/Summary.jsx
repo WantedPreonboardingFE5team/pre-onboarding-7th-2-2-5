@@ -2,9 +2,16 @@ import styled from 'styled-components';
 import Divider from '@mui/material/Divider';
 import { variableReplace, getDate } from '../../utils';
 import SummaryItem from './SummaryItem';
+import { useState } from 'react';
 
-const Summary = ({ props }) => {
+const Summary = ({ props, editId }) => {
   const isEnded = !!props?.endDate;
+  // const [isEdit, setIsEdit] = useState(false);
+
+  const editHandle = (id) => {
+    // setIsEdit((prev) => !prev);
+  };
+
   return (
     <StSummary>
       {props?.adType === 'web' ? <p>웹광고_{props?.title}</p> : <p>앱광고_{props?.title}</p>}

@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { getStatus } from '../../utils/index';
 import Summary from './Summary';
 
 const Ad = () => {
   const ads = useSelector((state) => state);
-  const dispatch = useDispatch();
   const [adList, setAdList] = useState(ads);
 
   const selectHandel = (e) => {
@@ -34,7 +33,7 @@ const Ad = () => {
       </StMenu>
       <StAdWrapper>
         {adList?.map((ad) => (
-          <Summary key={ad.id} props={ad} />
+          <Summary key={ad.id} props={ad} editId={ad.id} />
         ))}
       </StAdWrapper>
     </StAdd>
@@ -80,6 +79,17 @@ const StButton = styled.button`
 
   color: white;
   font-size: 17px;
+  cursor: pointer;
+`;
+
+const StEditButton = styled.button`
+  margin-top: 20px;
+  padding: 10px 20px;
+
+  border: 1px solid #d1d8dc;
+  background-color: white;
+  border-radius: 10px;
+
   cursor: pointer;
 `;
 
