@@ -1,42 +1,31 @@
 import styled from 'styled-components';
 import Divider from '@mui/material/Divider';
+import { getStatus, getDate } from '../../utils';
+import SummaryItem from './SummaryItem';
 
 const Summary = ({ props }) => {
-  console.log('ad', props);
+  const isEnded = !!props?.endDate;
+  console.log(props);
+
   return (
     <StSummary>
-      <p>웹광고_425849923</p>
+      {props?.adType === 'web' ? <p>웹광고_{props?.title}</p> : <p>앱광고_{props?.title}</p>}
       <StList>
         <Divider />
-        <StListItem>
-          <StListTitle>상태</StListTitle>
-          <StListContent>진행중</StListContent>
-        </StListItem>
+        <SummaryItem title="상태" content={getStatus[props?.status]} />
         <Divider />
-        <StListItem>
-          <StListTitle>광고 생성일 </StListTitle>
-          <StListContent>2021-06-24</StListContent>
-        </StListItem>
+        <SummaryItem
+          title="광고 생성일"
+          content={isEnded ? `${getDate(props?.startDate)} (${getDate(props?.endDate)})` : getDate(props?.startDate)}
+        />
         <Divider />
-        <StListItem>
-          <StListTitle>일 희망 예산</StListTitle>
-          <StListContent>40만원</StListContent>
-        </StListItem>
+        <SummaryItem title="일 희망 예산" content={props?.budget} />
         <Divider />
-        <StListItem>
-          <StListTitle>광고 수익률</StListTitle>
-          <StListContent>656%</StListContent>
-        </StListItem>
+        <SummaryItem title="광고 수익률" content={`${props?.report.roas}%`} />
         <Divider />
-        <StListItem>
-          <StListTitle>매출</StListTitle>
-          <StListContent>656%</StListContent>
-        </StListItem>
+        <SummaryItem title="매출" content={props?.report.convValue} />
         <Divider />
-        <StListItem>
-          <StListTitle>광고 비용</StListTitle>
-          <StListContent>656%</StListContent>
-        </StListItem>
+        <SummaryItem title="광고 비용" content={props?.report.cost} />
         <Divider />
       </StList>
       <StButton>수정하기</StButton>
@@ -63,25 +52,6 @@ const StList = styled.div`
   margin-top: 40px;
 `;
 
-const StListItem = styled.div`
-  padding: 10px 16px;
-  p {
-    font-size: 20px;
-    font-weight: 700;
-  }
-  span {
-    line-height: 2;
-  }
-`;
-
-const StListTitle = styled.span`
-  color: #94a2ad;
-`;
-
-const StListContent = styled.span`
-  margin-left: 30px;
-`;
-
 const StButton = styled.button`
   margin-top: 20px;
   padding: 10px 20px;
@@ -90,6 +60,5 @@ const StButton = styled.button`
   background-color: white;
   border-radius: 10px;
 
-  font-size: 17px;
   cursor: pointer;
 `;

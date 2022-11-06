@@ -1,31 +1,46 @@
-import styled from 'styled-components';
-import Summary from './Summary';
-import adList from '../../db/ad_list.json';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { getAdStatus } from '../../store';
+import Summary from './Summary';
 
 const Ad = () => {
-  const [ads, setAds] = useState(adList.ads);
-  console.log('ads', ads);
+  const ads = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const [adList, setAdList] = useState(ads);
+  const status = {
+    ACTIVE: 'active',
+    ENDED: 'ended',
+    TOTAL: 'total',
+  };
+
+  const selectHandel = (e) => {
+    const { value } = e.target;
+
+    switch (value) {
+      case status.ACTIVE:
+        return setAdList(ads?.filter((ad) => ad?.status === status.ACTIVE));
+      case status.ENDED:
+        return setAdList(ads?.filter((ad) => ad?.status === status.ENDED));
+      default:
+        return setAdList(ads);
+    }
+  };
 
   return (
     <StAdd>
       <StMenu>
-        <StSelect>
-          <option value="filter">전체 광고</option>
-          <option value="filter">진행 중 광고</option>
-          <option value="filter">중단 광고</option>
+        <StSelect onChange={selectHandel}>
+          <option value="total">전체 광고</option>
+          <option value="active">진행 중 광고</option>
+          <option value="ended">중단 광고</option>
         </StSelect>
         <StButton>광고 만들기</StButton>
       </StMenu>
       <StAdWrapper>
-        {ads.map((ad, index) => (
-          <Summary key={ad.id} />
+        {adList?.map((ad) => (
+          <Summary key={ad.id} props={ad} />
         ))}
-        <Summary />
-        <Summary />
-        <Summary />
-        <Summary />
-        <Summary />
       </StAdWrapper>
     </StAdd>
   );
@@ -38,7 +53,7 @@ const StAdd = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
   background-color: white;
 
-  height: 650px;
+  height: fit-content;
   margin: 20px 40px;
 
   padding: 40px;
@@ -75,7 +90,8 @@ const StButton = styled.button`
 
 const StAdWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   column-gap: 20px;
   row-gap: 20px;
 `;
