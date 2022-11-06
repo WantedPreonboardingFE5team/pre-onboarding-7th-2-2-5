@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 import Divider from '@mui/material/Divider';
-import { getStatus, getDate } from '../../utils';
+import { variableReplace, getDate } from '../../utils';
 import SummaryItem from './SummaryItem';
 
 const Summary = ({ props }) => {
   const isEnded = !!props?.endDate;
-  console.log(props);
-
   return (
     <StSummary>
       {props?.adType === 'web' ? <p>웹광고_{props?.title}</p> : <p>앱광고_{props?.title}</p>}
       <StList>
         <Divider />
-        <SummaryItem title="상태" content={getStatus[props?.status]} />
+        <SummaryItem title="상태" content={variableReplace.status[props?.status]} />
         <Divider />
         <SummaryItem
           title="광고 생성일"

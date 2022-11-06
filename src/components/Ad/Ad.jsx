@@ -1,27 +1,22 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { getAdStatus } from '../../store';
+import { getStatus } from '../../utils/index';
 import Summary from './Summary';
 
 const Ad = () => {
   const ads = useSelector((state) => state);
   const dispatch = useDispatch();
   const [adList, setAdList] = useState(ads);
-  const status = {
-    ACTIVE: 'active',
-    ENDED: 'ended',
-    TOTAL: 'total',
-  };
 
   const selectHandel = (e) => {
     const { value } = e.target;
 
     switch (value) {
-      case status.ACTIVE:
-        return setAdList(ads?.filter((ad) => ad?.status === status.ACTIVE));
-      case status.ENDED:
-        return setAdList(ads?.filter((ad) => ad?.status === status.ENDED));
+      case getStatus.ACTIVE:
+        return setAdList(ads?.filter((ad) => ad?.status === getStatus.ACTIVE));
+      case getStatus.ENDED:
+        return setAdList(ads?.filter((ad) => ad?.status === getStatus.ENDED));
       default:
         return setAdList(ads);
     }
@@ -31,9 +26,9 @@ const Ad = () => {
     <StAdd>
       <StMenu>
         <StSelect onChange={selectHandel}>
-          <option value="total">전체 광고</option>
-          <option value="active">진행 중 광고</option>
-          <option value="ended">중단 광고</option>
+          <option value={getStatus.TOTAL}>전체 광고</option>
+          <option value={getStatus.ACTIVE}>진행 중 광고</option>
+          <option value={getStatus.ENDED}>중단 광고</option>
         </StSelect>
         <StButton>광고 만들기</StButton>
       </StMenu>
