@@ -36,7 +36,7 @@ const StDatePickerContainer = styled.div`
   align-items: center;
 
   .datePicker {
-    width: 100px;
+    width: 110px;
     border: none;
     background-color: #f6f7f8;
     color: #3a474e;

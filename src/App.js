@@ -29,8 +29,6 @@ function App() {
 export default App;
 
 const StMainContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
   background-color: #e5e5e5;
 `;
 
