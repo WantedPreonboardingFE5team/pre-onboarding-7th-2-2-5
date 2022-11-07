@@ -96,9 +96,9 @@ $ npm start
 
 ## 🔗 배포 링크
 
-//링크추가
+[배포링크](https://pre-onboarding-7th-2-2-5.vercel.app/)
 
-- 해당 프로젝트는 AWS S3를 통해 배포하였습니다.
+- 해당 프로젝트는 vercel를 통해 배포하였습니다.
 - 상단 링크에 접속하시면 바로 대시보드 및 광고 관련 데이터를 확인할 수 있습니다.
 
 ## 📦 파일 구조
@@ -109,12 +109,10 @@ $ npm start
 
 ```
 📦src
- ┣ 📂apis
- ┃ ┗ 📜apis.js
  ┣ 📂assets
  ┃ ┣ 📂database
  ┃ ┃ ┣ 📜adListDataSet.json               // 광고 목록 db
- ┃ ┃ ┗ 📜trendDataSet.json                // chart에서 사용되는 db
+ ┃ ┃ ┗ 📜trendDataSet.json                // 광고 현황 수치
  ┣ 📂components
  ┃ ┣ 📂UI
  ┃ ┃ ┣ 📜Button.jsx
@@ -127,7 +125,7 @@ $ npm start
  ┃ ┃ ┗ 📜AdminLayout.jsx
  ┃ ┣ 📂common
  ┃ ┃ ┣ 📂sidebar
- ┃ ┃ ┃ ┣ 📜AdvertisementCenterTab.jsx
+ ┃ ┃ ┃ ┣ 📜AdvertisementCenterTab.jsx     // 대시보드와 광고관리 버튼
  ┃ ┃ ┃ ┣ 📜Guide.jsx
  ┃ ┃ ┃ ┣ 📜ServiceTab.jsx
  ┃ ┃ ┃ ┗ 📜Sidebar.jsx
@@ -151,10 +149,6 @@ $ npm start
  ┃ ┗ 📜dateContext.js                     // 대시보드 - 선택한 날짜 관리하는 컨텍스트 
  ┣ 📂data
  ┃ ┗ 📜filterCategory.js                  // 대시보드 - chart에 사용되는 필터 카테고리
- ┣ 📂db
- ┃ ┣ 📜ad_list.json
- ┃ ┣ 📜media_channel_data.json
- ┃ ┗ 📜trend_data.json
  ┣ 📂hooks
  ┃ ┣ 📜useGetChartValues.jsx
  ┃ ┗ 📜useToggle.js
@@ -233,3 +227,10 @@ props를 넘겨주지 않아도 각 component에서 전역적으로 관리되는
 [https://github.com/WantedPreonboardingFE5team/pre-onboarding-7th-2-2-5/blob/8f892035deb4c1b8b630037387cdff50f5290ec7/src/data/filterCategory.js#L10-L17](https://github.com/WantedPreonboardingFE5team/pre-onboarding-7th-2-2-5/blob/8f892035deb4c1b8b630037387cdff50f5290ec7/src/data/filterCategory.js#L10-L17)
 
 [https://github.com/WantedPreonboardingFE5team/pre-onboarding-7th-2-2-5/blob/8f892035deb4c1b8b630037387cdff50f5290ec7/src/components/dashboard/ChartFilterOption.jsx#L19-L37](https://github.com/WantedPreonboardingFE5team/pre-onboarding-7th-2-2-5/blob/8f892035deb4c1b8b630037387cdff50f5290ec7/src/components/dashboard/ChartFilterOption.jsx#L19-L37)
+
+### 🧐 고민했던 부분
+
+- 어디까지 전역관리를 해야 하나 - 요구 구현 사항에 어떤 상태로 다른 페이지에 이동했다 하더라도, 다시 기존 페이지로 복귀 할 시 마지막 상태가 유지되어야 하는 조건에 맞춰 value 값을 정하여  전역으로 관리하였습니다.
+- 주간/ 일별 구현 문제 - 제공받은 데이터에서 주간 / 일별 구분없이 date 값만 존재  일별 조건으로 차트에 그래프를 그리기 위해서는 시간 정보가 필요하다고 생각하여 구현을 보류했습니다.
+- 정제되지 않은 데이터 가공 - 데이터 안에 있는 각 키값이 어떤 의미의 값인지 식별이 어려웠습니다. 이러한 문제점을 해결하기 위해   [GitHub-Discussions](https://github.com/orgs/WantedPreonboardingFE5team/discussions/27#discussion-4541513) 을 통해 의견을 조율 했습니다. 증감분 로직이 마케팅 용어로 헷갈리는 부분이 있어 이 부분 역시 팀원들과 의견을 나누어 개념을 정리했습니다. [관련 Discussions](https://github.com/orgs/WantedPreonboardingFE5team/discussions/28#discussion-4541545) <br>
+![2022-11-07_11 33 29](https://user-images.githubusercontent.com/106301980/200216502-827553ea-0869-47c7-8169-c2934e6b74d1.png)
